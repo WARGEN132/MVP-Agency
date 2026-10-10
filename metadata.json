@@ -1,0 +1,6 @@
+{
+  "name": "MVP Agency",
+  "description": "Продюсируем экспертов и блогеров: от охватов до продаж. Упаковка, контент, монетизация.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #050508;
+    --bg-surface: #0e0e14;
+    --bg-card: rgba(18, 18, 26, 0.7);
+    --text-primary: #f4f4f6;
+    --text-muted: #a1a1aa;
+    --accent-purple: #a855f7;
+    --accent-purple-glow: #c084fc;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #050508;
+    color: #f4f4f6;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: #050508;
+    color: #f4f4f6;
+    overflow-x: hidden;
+    min-height: 100vh;
+    touch-action: manipulation;
+  }
+
+  /* Prevent iOS automatic zoom on inputs by ensuring minimum 16px font size */
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+
+  /* Hide default browser cursor only on pointer devices so the custom glowing circle acts as the cursor */
+  @media (pointer: fine) {
+    *, *::before, *::after, html, body {
+      cursor: none !important;
+    }
+  }
+
+  /* Offset for navigation anchor clicks to avoid fixed header overlap */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  #top {
+    scroll-margin-top: 0px;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Unbounded', 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: normal;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050508;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* Glassmorphism & Purple Cards */
+.glass-card {
+  background: rgba(14, 14, 20, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.glass-card:hover {
+  border-color: rgba(168, 85, 247, 0.45);
+  box-shadow: 0 12px 32px -8px rgba(168, 85, 247, 0.18);
+  transform: translateY(-3px);
+}
+
+.glass-nav {
+  background: rgba(8, 8, 12, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Purple Pulsing Glow */
+@keyframes purpleGlowPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.08);
+  }
+}
+
+.animate-purple-glow {
+  animation: purpleGlowPulse 4s infinite ease-in-out;
+}
